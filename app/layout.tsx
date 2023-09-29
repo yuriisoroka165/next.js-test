@@ -21,7 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<header>Menu</header>
+				{/* <header>Menu</header> */}
 				{/* {map}
 				{rules} */}
 				{children}
