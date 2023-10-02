@@ -1,38 +1,40 @@
 "use client";
 
-import "hls-video-element";
-import {
-	MediaController,
-	MediaControlBar,
-	MediaTimeRange,
-	MediaTimeDisplay,
-	MediaVolumeRange,
-	MediaPlayButton,
-	MediaSeekBackwardButton,
-	MediaSeekForwardButton,
-	MediaMuteButton,
-} from "media-chrome/dist/react";
+import React from "react";
+import ReactPlayer from "react-player";
 
 export default function Video() {
+	const hlsStreams = [
+		"http://192.168.30.170:80/hls1/stream.m3u8",
+		"http://192.168.30.170:80/hls2/stream.m3u8",
+		"http://192.168.30.170:80/hls3/stream.m3u8",
+		"http://192.168.30.170:80/hls4/stream.m3u8",
+		"http://192.168.30.170:80/hls5/stream.m3u8",
+		"http://192.168.30.170:80/hls6/stream.m3u8",
+		"http://192.168.30.170:80/hls7/stream.m3u8",
+		"http://192.168.30.170:80/hls8/stream.m3u8",
+		"http://192.168.30.170:80/hls9/stream.m3u8",
+		"http://192.168.30.170:80/hls10/stream.m3u8",
+		"http://192.168.30.170:80/hls11/stream.m3u8",
+		"http://192.168.30.170:80/hls12/stream.m3u8",
+		"http://192.168.30.170:80/hls13/stream.m3u8",
+		"http://192.168.30.170:80/hls14/stream.m3u8",
+		"http://192.168.30.170:80/hls15/stream.m3u8",
+		"http://192.168.30.170:80/hls16/stream.m3u8",
+	];
 	return (
-		<MediaController>
-			<hls-video
-				slot="media"
-				// src="rtmp://192.168.30.170:1935/hls25/stream"
-				src="http://192.168.30.170:80/hls3/stream.m3u8"
-				preload="auto"
-				muted
-				crossOrigin=""
-			></hls-video>
-			<MediaControlBar>
-				<MediaPlayButton></MediaPlayButton>
-				<MediaSeekBackwardButton></MediaSeekBackwardButton>
-				<MediaSeekForwardButton></MediaSeekForwardButton>
-				<MediaTimeRange></MediaTimeRange>
-				<MediaTimeDisplay showDuration></MediaTimeDisplay>
-				<MediaMuteButton></MediaMuteButton>
-				<MediaVolumeRange></MediaVolumeRange>
-			</MediaControlBar>
-		</MediaController>
+		<div style={{ display: "flex", flexWrap:"wrap" }}>
+			{hlsStreams.map((stream, index) => (
+				<div style={{ flexGrow: 1, flexBasis: 400 }} key={index}>
+					<ReactPlayer
+						url={stream}
+						playing
+						controls
+						width="100%"
+						height="240px"
+					/>
+				</div>
+			))}
+		</div>
 	);
 }

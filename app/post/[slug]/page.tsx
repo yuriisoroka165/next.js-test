@@ -4,6 +4,8 @@
 // 	};
 // }
 
+//генеруються швидкі статичні сторінки
+// запити на сервер ідуить при зборці npm run build
 export async function generateStaticParams() {
 	const films = await fetch("https://swapi.dev/api/films").then((res) =>
 		res.json()
